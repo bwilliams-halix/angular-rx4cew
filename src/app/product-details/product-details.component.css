@@ -1,0 +1,29 @@
+div.detailHeader {
+    clear: both;
+    border: 1px solid black;
+}
+
+div.detailFooter {
+    border: 1px solid black;
+    margin-top: 20px
+}
+
+h3.detailProductName {
+  float: left;
+}
+
+h4.detailProductPrice {
+  float: left; padding-left: 10px;
+}
+
+p.detailProductDescription {
+  clear: both;
+}
+
+button.backButton {
+  margin-top: 40px;
+}
+
+button.buyButton {
+  margin-top: 10px;
+}

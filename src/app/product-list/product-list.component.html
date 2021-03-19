@@ -1,0 +1,28 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products" [id]="'div' + product.id">
+  <h3>
+    <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+      {{ product.name }}
+    </a>
+  </h3>
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+  <div class="buttons">
+    <button class="buyButton" (click)="addToCart(product)">Add to cart</button>
+    <button (click)="share()" *ngIf="product.description !== null">
+      Share
+    </button>
+    <button (click)="trash(product)" *ngIf="product.description == null">
+      Trash it
+    </button>
+    <app-product-alerts [product]="product" (notify)="onNotify()">
+    </app-product-alerts>
+  </div>
+</div>
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->

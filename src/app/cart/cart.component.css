@@ -1,0 +1,26 @@
+div.cartHeader {
+  border: 1px solid black;
+  clear: both;
+}
+
+div.cartFooter {
+  clear: both;
+  border: 1px solid black;
+  margin-top: 20px
+}
+
+h3.cartNoItems {
+  float: left;
+}
+
+h3.cartProductName {
+  float: left;
+}
+
+h4.cartProductPrice {
+  float: left; padding-left: 10px;
+}
+
+button.backButton {
+  margin-top: 40px;
+}

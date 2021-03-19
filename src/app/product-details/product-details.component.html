@@ -1,0 +1,12 @@
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <div class="detailHeader">
+    <h3 class="detailProductName">{{ product.name }}</h3>
+    <h4 class="detailProductPrice">({{ product.price | currency }})</h4>
+  </div>
+ <p class="detailProductDescription">{{ product.description }}</p>
+ <button class="buyButton" (click)="addToCart(product)">Add to cart</button>
+ <div class="detailFooter"></div>
+</div>
+<button class="backButton" [routerLink]="['/']"><- Go Back</button>
