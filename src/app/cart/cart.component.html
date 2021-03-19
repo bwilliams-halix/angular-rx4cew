@@ -1,30 +1,53 @@
 <h3>Cart</h3>
 
-<p>
-  <a routerLink="/shipping">Shipping Prices</a>
-</p>
-
-<div class="cart-item" *ngFor="let item of items">
-  <span>{{ item.name }} </span>
-  <span>{{ item.price | currency }}</span>
+<div *ngIf="items.length <= 0 && !submitted">
+  <div class="cartHeader"></div>
+  <p class="cartProductName">Your cart is empty!</p>
+  <div class="cartFooter"></div>
 </div>
 
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+<div *ngIf="items.length <= 0 && submitted">
+  <div class="cartHeader"></div>
+  <p>{{ submittedMsg[0] }}</p>
+  <p>{{ submittedMsg[1] }}</p>
+  <p>{{ submittedMsg[2] }}</p>
+  <div class="cartFooter"></div>
+</div>
 
-  <div>
-    <label for="name">
-      Name
-    </label>
-    <input id="name" type="text" formControlName="name">
+<div *ngIf="items.length > 0">
+  <p>
+    <a routerLink="/shipping">Shipping Prices</a>
+  </p>
+
+  <div class="cart-item" *ngFor="let item of items">
+    <span class="cartName">{{ item.name }} </span>
+    <span>{{ item.price | currency }}</span>
+    <span> * {{ counts[item.id-1] }} = </span>
+    <span>{{ item.price * counts[item.id-1] | currency }}</span>
+  </div>
+  <div class="cart-item">
+    <span>Total price</span>
+    <span>{{ total | currency }}</span>
   </div>
 
-  <div>
-    <label for="address">
-      Address
-    </label>
-    <input id="address" type="text" formControlName="address">
-  </div>
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
 
-  <button class="button" type="submit">Purchase</button>
+    <div>
+      <label for="name">
+        Name
+      </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
 
-</form>
+    <div>
+      <label for="address">
+        Address
+      </label>
+      <input id="address" type="text" formControlName="address">
+    </div>
+
+    <button class="button" type="submit">Purchase</button>
+
+  </form>
+</div>
+<button class="backButton" [routerLink]="['/']"><- Go Back</button>

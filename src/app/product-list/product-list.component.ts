@@ -20,13 +20,13 @@ constructor(
   }
 
   share() {
-    window.alert('The product has been shared!');
+    window.alert('The product has been shared on all your social streams!');
   }
 
   trash(product) {
     this.cartService.removeItem(product);
     document.getElementById('div' + product.id).style.display = "none";
-    window.alert('The product has been thrown in the trash!');
+    window.alert('The product has been thrown in the trash... for now!');
   }
 
   addToCart(product) {

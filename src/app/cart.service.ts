@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class CartService {
+  counts: number[] = [];
   items = [];
 
   constructor(
@@ -13,11 +14,26 @@ export class CartService {
   ) { }
 
   addToCart(product) {
-    this.items.push(product);
+    const index = product.id - 1;
+    if (this.items.find(aproduct => aproduct.id === product.id)) {
+      this.counts[index]=this.counts[index] + 1;
+    } else {
+      this.counts[index]=1;
+      this.items.push(product);
+    }
+  }
+
+  getCounts() {
+    return this.counts;
   }
 
   getItems() {
     return this.items;
+  }
+
+  clearCounts() {
+    this.counts = [];
+    return this.counts;
   }
 
   clearCart() {
@@ -28,6 +44,7 @@ export class CartService {
   removeItem(product) {
     const index = this.items.indexOf(product);
     if (index > -1) {
+      this.counts.splice(product.id-1, 1);
       this.items.splice(index, 1);
     }
   }

@@ -9,6 +9,10 @@ div.cartFooter {
   margin-top: 20px
 }
 
+span.cartName {
+  width: 120px;
+}
+
 h3.cartNoItems {
   float: left;
 }
